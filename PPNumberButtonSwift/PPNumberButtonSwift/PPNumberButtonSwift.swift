@@ -267,8 +267,8 @@ extension PPNumberButtonSwift {
      - parameter increaseTitle: 加按钮标题
      */
     func setTitle(decreaseTitle decreaseTitle: String, increaseTitle: String) {
-        decreaseBtn.setImage(nil, forState: UIControlState.Normal)
-        increaseBtn.setImage(nil, forState: UIControlState.Normal)
+        decreaseBtn.setBackgroundImage(nil, forState: UIControlState.Normal)
+        increaseBtn.setBackgroundImage(nil, forState: UIControlState.Normal)
         
         decreaseBtn.setTitle(decreaseTitle, forState: UIControlState.Normal)
         increaseBtn.setTitle(increaseTitle, forState: UIControlState.Normal)
