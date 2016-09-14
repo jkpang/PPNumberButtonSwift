@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		223500001D87F02A00CBD908 /* PPNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2235FFFF1D87F02A00CBD908 /* PPNumberButton.swift */; };
 		2235FFE01D87F00200CBD908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2235FFDF1D87F00200CBD908 /* AppDelegate.swift */; };
 		2235FFE21D87F00200CBD908 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2235FFE11D87F00200CBD908 /* ViewController.swift */; };
 		2235FFE51D87F00200CBD908 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2235FFE31D87F00200CBD908 /* Main.storyboard */; };
 		2235FFE71D87F00200CBD908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2235FFE61D87F00200CBD908 /* Assets.xcassets */; };
 		2235FFEA1D87F00200CBD908 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2235FFE81D87F00200CBD908 /* LaunchScreen.storyboard */; };
 		2235FFF51D87F00200CBD908 /* PPNumberButtonSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2235FFF41D87F00200CBD908 /* PPNumberButtonSwiftTests.swift */; };
+		227682BD1D8919F100675B21 /* PPNumberButtonSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227682BC1D8919F100675B21 /* PPNumberButtonSwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,7 @@
 		2235FFF01D87F00200CBD908 /* PPNumberButtonSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPNumberButtonSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2235FFF41D87F00200CBD908 /* PPNumberButtonSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPNumberButtonSwiftTests.swift; sourceTree = "<group>"; };
 		2235FFF61D87F00200CBD908 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2235FFFF1D87F02A00CBD908 /* PPNumberButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPNumberButton.swift; sourceTree = "<group>"; };
+		227682BC1D8919F100675B21 /* PPNumberButtonSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPNumberButtonSwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +58,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		223500011D87F03700CBD908 /* PPNumberButton */ = {
-			isa = PBXGroup;
-			children = (
-				2235FFFF1D87F02A00CBD908 /* PPNumberButton.swift */,
-			);
-			name = PPNumberButton;
-			sourceTree = "<group>";
-		};
 		2235FFD31D87F00100CBD908 = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +79,7 @@
 		2235FFDE1D87F00100CBD908 /* PPNumberButtonSwift */ = {
 			isa = PBXGroup;
 			children = (
-				223500011D87F03700CBD908 /* PPNumberButton */,
+				227682BB1D8919F100675B21 /* PPNumberButtonSwift */,
 				2235FFDF1D87F00200CBD908 /* AppDelegate.swift */,
 				2235FFE11D87F00200CBD908 /* ViewController.swift */,
 				2235FFE31D87F00200CBD908 /* Main.storyboard */,
@@ -105,6 +97,14 @@
 				2235FFF61D87F00200CBD908 /* Info.plist */,
 			);
 			path = PPNumberButtonSwiftTests;
+			sourceTree = "<group>";
+		};
+		227682BB1D8919F100675B21 /* PPNumberButtonSwift */ = {
+			isa = PBXGroup;
+			children = (
+				227682BC1D8919F100675B21 /* PPNumberButtonSwift.swift */,
+			);
+			path = PPNumberButtonSwift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223500001D87F02A00CBD908 /* PPNumberButton.swift in Sources */,
+				227682BD1D8919F100675B21 /* PPNumberButtonSwift.swift in Sources */,
 				2235FFE21D87F00200CBD908 /* ViewController.swift in Sources */,
 				2235FFE01D87F00200CBD908 /* AppDelegate.swift in Sources */,
 			);

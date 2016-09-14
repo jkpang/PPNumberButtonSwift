@@ -1,5 +1,5 @@
 //
-//  PPNumberButton.swift
+//  PPNumberButtonSwift.swift
 //  PPNumberButtonSwift
 //
 //  Created by AndyPang on 16/9/13.
@@ -13,10 +13,10 @@ typealias ResultClosure = (number: String)->()
 
 public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
-    func numberButtonResult(numberButton: PPNumberButton, number: String)
+    func numberButtonResult(numberButton: PPNumberButtonSwift, number: String)
 }
 
-@IBDesignable public class PPNumberButton: UIView {
+@IBDesignable public class PPNumberButtonSwift: UIView {
 
     weak var delegate: PPNumberButtonDelegate?  // 代理
     var NumberResultClosure: ResultClosure?     // 闭包
@@ -169,7 +169,7 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
 }
 
-extension PPNumberButton: UITextFieldDelegate {
+extension PPNumberButtonSwift: UITextFieldDelegate {
     
     // MARK: - UITextFieldDelegate
     public func textFieldDidEndEditing(textField: UITextField) {
@@ -187,7 +187,7 @@ extension PPNumberButton: UITextFieldDelegate {
 }
 
 // MARK: - 自定义UI接口
-extension PPNumberButton {
+extension PPNumberButtonSwift {
 
     /**
      加减按钮的响应闭包回调
