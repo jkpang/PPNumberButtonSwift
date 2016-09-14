@@ -1,7 +1,7 @@
 # PPNumberButtonSwift
 仿京东淘宝购物车商品的加减按钮的Swift版本,可定制程度较高, 使用简单,和Objective-C版本功能相同!
 
-####如果你需要Objective-C版本,请戳: https://github.com/jkpang/PPNumberButton, 欢迎Star
+####如果你需要Objective-C版本,请戳: https://github.com/jkpang/PPNumberButton
 
 ![示例图](https://github.com/jkpang/PPNumberButton/blob/master/PPNumberButton.gif)
 
@@ -24,63 +24,63 @@ then
 ###1.默认样式
 
 ```swift
-        let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 100, width: 110, height: 30))
-        //开启抖动动画
-        numberButton.shakeAnimation(true)
-        //加减按钮的闭包回调
-        numberButton.numberResult { (number) in
-            print(number)
-        }
+let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 100, width: 110, height: 30))
+//开启抖动动画
+numberButton.shakeAnimation(true)
+//加减按钮的闭包回调
+numberButton.numberResult { (number) in
+    print(number)
+}
         
-        view.addSubview(numberButton)
+view.addSubview(numberButton)
 ```
 ###2.边框样式
 
 ```swift
-        let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 160, width: 200, height: 30))
+let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 160, width: 200, height: 30))
         
-        //设置边框颜色
-        numberButton.borderColor(UIColor.grayColor())
-        //加减按钮的闭包回调
-        numberButton.numberResult { (number) in
-            print(number)
-        }
+//设置边框颜色
+numberButton.borderColor(UIColor.grayColor())
+//加减按钮的闭包回调
+numberButton.numberResult { (number) in
+    print(number)
+}
         
-        view.addSubview(numberButton)
+view.addSubview(numberButton)
 ```
 ###3.自定义加减按钮的标题
 
 ```swift
-        let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 220, width: 150, height: 44))
-        //设置加减按钮的标题
-        numberButton.setTitle(decreaseTitle: "加", increaseTitle: "减")
-        //设置加减按钮标题的字体大小
-        numberButton.buttonTitleFont(UIFont.systemFontOfSize(15))
-        //开启抖动动画
-        numberButton.shakeAnimation(true)
-        //加减按钮的闭包回调
-        numberButton.numberResult { (number) in
-            print(number)
-        }
+let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 220, width: 150, height: 44))
+//设置加减按钮的标题
+numberButton.setTitle(decreaseTitle: "加", increaseTitle: "减")
+//设置加减按钮标题的字体大小
+numberButton.buttonTitleFont(UIFont.systemFontOfSize(15))
+//开启抖动动画
+numberButton.shakeAnimation(true)
+//加减按钮的闭包回调
+numberButton.numberResult { (number) in
+    print(number)
+}
         
-        view.addSubview(numberButton)
+view.addSubview(numberButton)
 
 ```
 ###4.自定义加减按钮的背景图片
 
 ```swift
-        let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 300, width: 100, height: 30))
+let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 300, width: 100, height: 30))
         
-        //设置加减按钮的自定义图片
-        numberButton.setImage(decreaseImage: UIImage.init(named: "decrease_highlight")!, increaseImage: UIImage.init(named: "timeline_relationship_icon_addattention-1")!)
-        //开启抖动动画
-        numberButton.shakeAnimation(true)
-        //加减按钮的闭包回调
-        numberButton.numberResult { (number) in
-            print(number)
-        }
+//设置加减按钮的自定义图片
+numberButton.setImage(decreaseImage: UIImage.init(named: "decrease_highlight")!, increaseImage: UIImage.init(named: "timeline_relationship_icon_addattention-1")!)
+//开启抖动动画
+numberButton.shakeAnimation(true)
+//加减按钮的闭包回调
+numberButton.numberResult { (number) in
+    print(number)
+}
         
-        view.addSubview(numberButton)
+view.addSubview(numberButton)
 
 
 ```
@@ -93,7 +93,7 @@ then
 
 ====
 
-#####你的Star是我持续更新的动力!
+####你的Star是我持续更新的动力!
 
 ##CocoaPods更新日志
 
