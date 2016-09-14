@@ -12,7 +12,13 @@
 ##Installation 安装
 ###1.手动安装:
 下载DEMO后,将PPNumberButtonSwift子文件夹拖入到项目中, 就可以直接使用,不用import任何东西.
+###2.CocoaPods安装:
+first
+`pod 'PPNumberButtonSwift', '~> 0.1.0' `
+then
+`pod install或pod install --no-repo-update`
 
+如果发现pod search PPNumberButtonSwift 不是最新版本，在终端执行pod setup命令更新本地spec镜像缓存(时间可能有点长),重新搜索就OK了
 ##Usage 使用方法
 
 ###1.默认样式
@@ -88,6 +94,10 @@
 ====
 
 #####你的Star是我持续更新的动力!
+
+##CocoaPods更新日志
+
+* 2016.09.14(tag:0.1.0)--Pods初始化
 
 ##联系方式:
 * Weibo : @CoderPang
