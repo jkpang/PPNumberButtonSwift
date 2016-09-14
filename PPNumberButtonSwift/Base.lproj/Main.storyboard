@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VMw-7Z-rcB" customClass="PPNumberButtonSwift" customModule="PPNumberButtonSwift" customModuleProvider="target">
-                                <rect key="frame" x="74" y="510" width="240" height="78"/>
+                                <rect key="frame" x="67" y="384" width="240" height="78"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>

@@ -284,8 +284,8 @@ extension PPNumberButtonSwift {
         decreaseBtn.setTitle(nil, forState: UIControlState.Normal)
         increaseBtn.setTitle(nil, forState: UIControlState.Normal)
         
-        decreaseBtn.setImage(decreaseImage, forState: UIControlState.Normal)
-        increaseBtn.setImage(increaseImage, forState: UIControlState.Normal)
+        decreaseBtn.setBackgroundImage(decreaseImage, forState: UIControlState.Normal)
+        increaseBtn.setBackgroundImage(increaseImage, forState: UIControlState.Normal)
     }
 
 }
