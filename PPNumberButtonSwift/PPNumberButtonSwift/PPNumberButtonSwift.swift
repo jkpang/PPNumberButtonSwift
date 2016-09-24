@@ -26,14 +26,14 @@
 import UIKit
 
 /// 定义一个闭包
-typealias ResultClosure = (number: String)->()
+typealias ResultClosure = (_ number: String)->()
 
 public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
-    func numberButtonResult(numberButton: PPNumberButtonSwift, number: String)
+    func numberButtonResult(_ numberButton: PPNumberButtonSwift, number: String)
 }
 
-@IBDesignable public class PPNumberButtonSwift: UIView {
+@IBDesignable open class PPNumberButtonSwift: UIView {
 
     weak var delegate: PPNumberButtonDelegate?  // 代理
     var NumberResultClosure: ResultClosure?     // 闭包
@@ -41,7 +41,7 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     var decreaseBtn: UIButton!     // 减按钮
     var increaseBtn: UIButton!     // 加按钮
     var textField: UITextField!    // 数量展示/输入框
-    var timer: NSTimer!            // 快速加减定时器
+    var timer: Timer!            // 快速加减定时器
     
     
     override public init(frame: CGRect) {
@@ -49,7 +49,7 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
         
         setupUI()
         //整个控件的默认尺寸(和某宝上面的按钮同样大小)
-        if CGRectIsEmpty(frame) {self.frame = CGRect(x: 0, y: 0, width: 110, height: 30)}
+        if frame.isEmpty {self.frame = CGRect(x: 0, y: 0, width: 110, height: 30)}
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -57,13 +57,13 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
         
     }
     
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         setupUI()
     }
     
     //设置UI布局
-    private func setupUI() {
-        backgroundColor = UIColor.whiteColor();
+    fileprivate func setupUI() {
+        backgroundColor = UIColor.white;
         layer.cornerRadius = 3.0;
         clipsToBounds = true;
         
@@ -72,15 +72,15 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
         
         textField = UITextField.init()
         textField.text = "1"
-        textField.font = UIFont.boldSystemFontOfSize(15)
+        textField.font = UIFont.boldSystemFont(ofSize: 15)
         textField.delegate = self
-        textField.keyboardType = UIKeyboardType.NumberPad
-        textField.textAlignment = NSTextAlignment.Center
+        textField.keyboardType = UIKeyboardType.numberPad
+        textField.textAlignment = NSTextAlignment.center
         self.addSubview(textField)
     }
     
     // MARK: - 重新布局UI
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         let height = frame.size.height
@@ -91,38 +91,38 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     }
     
     //设置加减按钮的公共方法
-    private func setupButton(title title:String) -> UIButton {
+    fileprivate func setupButton(title:String) -> UIButton {
         let button = UIButton.init();
-        button.setTitle(title, forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
-        button.addTarget(self, action:#selector(self.touchDown(_:)) , forControlEvents: UIControlEvents.TouchDown)
-        button.addTarget(self, action:#selector(self.touchUp(_:)) , forControlEvents:UIControlEvents.TouchUpOutside)
-        button.addTarget(self, action:#selector(self.touchUp(_:)) , forControlEvents:UIControlEvents.TouchUpInside)
-        button.addTarget(self, action:#selector(self.touchUp(_:)) , forControlEvents:UIControlEvents.TouchCancel)
+        button.setTitle(title, for: UIControlState())
+        button.setTitleColor(UIColor.gray, for: UIControlState())
+        button.addTarget(self, action:#selector(self.touchDown(_:)) , for: UIControlEvents.touchDown)
+        button.addTarget(self, action:#selector(self.touchUp(_:)) , for:UIControlEvents.touchUpOutside)
+        button.addTarget(self, action:#selector(self.touchUp(_:)) , for:UIControlEvents.touchUpInside)
+        button.addTarget(self, action:#selector(self.touchUp(_:)) , for:UIControlEvents.touchCancel)
         self.addSubview(button)
         return button;
     }
     
     // MARK: - 加减按钮点击响应
     //点击按钮: 单击逐次加减,长按连续加减
-    @objc private func touchDown(button: UIButton) {
+    @objc fileprivate func touchDown(_ button: UIButton) {
         textField.endEditing(false)
         if button == decreaseBtn {
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.15, target: self, selector: #selector(self.decrease), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(self.decrease), userInfo: nil, repeats: true)
         } else {
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.15, target: self, selector: #selector(self.increase), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(self.increase), userInfo: nil, repeats: true)
         }
         timer.fire()
     }
     
     //松开按钮:清除定时器
-    @objc private func touchUp(button: UIButton)  {
+    @objc fileprivate func touchUp(_ button: UIButton)  {
         cleanTimer()
     }
     
     // MARK: - 减运算
-    @objc private func decrease() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
+    @objc fileprivate func decrease() {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
             textField.text = "1"
         }
         
@@ -131,7 +131,7 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
             textField.text = "\(number)";
 
             //闭包回调
-            NumberResultClosure?(number: "\(number)")
+            NumberResultClosure?("\(number)")
             //delegate的回调
             delegate?.numberButtonResult(self, number: "\(number)")
         } else {
@@ -142,21 +142,21 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     }
     
     // MARK: - 加运算
-    @objc private func increase() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
+    @objc fileprivate func increase() {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
             textField.text = "1"
         }
         
         let number = Int(textField.text!)! + 1;
         textField.text = "\(number)";
         //闭包回调
-        NumberResultClosure?(number: "\(number)")
+        NumberResultClosure?("\(number)")
         //delegate的回调
         delegate?.numberButtonResult(self, number: "\(number)")
     }
     
     // MARK: - 抖动动画
-    private func shakeAnimation() {
+    fileprivate func shakeAnimation() {
         let animation = CAKeyframeAnimation.init(keyPath: "position.x")
         //获取当前View的position坐标
         let positionX = layer.position.x
@@ -169,11 +169,11 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
         //设置自动反转
         animation.autoreverses = true
         //将动画添加到layer
-        layer.addAnimation(animation, forKey: nil)
+        layer.add(animation, forKey: nil)
     }
     
-    private func cleanTimer() {
-        if ((timer?.valid) != nil) {
+    fileprivate func cleanTimer() {
+        if ((timer?.isValid) != nil) {
             timer.invalidate()
             timer = nil;
         }
@@ -189,13 +189,13 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
 extension PPNumberButtonSwift: UITextFieldDelegate {
     
     // MARK: - UITextFieldDelegate
-    public func textFieldDidEndEditing(textField: UITextField) {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
             textField.text = "1"
         }
         
         //闭包回调
-        NumberResultClosure?(number: "\(textField.text!)")
+        NumberResultClosure?("\(textField.text!)")
         //delegate的回调
         delegate?.numberButtonResult(self, number: "\(textField.text!)")
 
@@ -209,7 +209,7 @@ extension PPNumberButtonSwift {
     /**
      加减按钮的响应闭包回调
      */
-    func numberResult(finished: ResultClosure) {
+    func numberResult(_ finished: @escaping ResultClosure) {
         NumberResultClosure = finished
     }
     
@@ -226,21 +226,21 @@ extension PPNumberButtonSwift {
     /**
      是否开启抖动动画,默认false
      */
-    func shakeAnimation(isOpen: Bool) {
+    func shakeAnimation(_ isOpen: Bool) {
         isShakeAnimation = isOpen
     }
     
     /**
      输入框中的字体属性
      */
-    func inputFieldFont(inputFieldFont: UIFont) {
+    func inputFieldFont(_ inputFieldFont: UIFont) {
         textField.font = inputFieldFont;
     }
     
     /**
      加减按钮的字体属性
      */
-    func buttonTitleFont(buttonTitleFont: UIFont) {
+    func buttonTitleFont(_ buttonTitleFont: UIFont) {
         increaseBtn.titleLabel!.font = buttonTitleFont;
         decreaseBtn.titleLabel!.font = buttonTitleFont;
     }
@@ -248,10 +248,10 @@ extension PPNumberButtonSwift {
     /**
      设置按钮的边框颜色
      */
-    func borderColor(borderColor: UIColor) {
-        layer.borderColor = borderColor.CGColor;
-        decreaseBtn.layer.borderColor = borderColor.CGColor;
-        increaseBtn.layer.borderColor = borderColor.CGColor;
+    func borderColor(_ borderColor: UIColor) {
+        layer.borderColor = borderColor.cgColor;
+        decreaseBtn.layer.borderColor = borderColor.cgColor;
+        increaseBtn.layer.borderColor = borderColor.cgColor;
         
         layer.borderWidth = 0.5;
         decreaseBtn.layer.borderWidth = 0.5;
@@ -266,12 +266,12 @@ extension PPNumberButtonSwift {
      - parameter decreaseTitle: 减按钮标题
      - parameter increaseTitle: 加按钮标题
      */
-    func setTitle(decreaseTitle decreaseTitle: String, increaseTitle: String) {
-        decreaseBtn.setBackgroundImage(nil, forState: UIControlState.Normal)
-        increaseBtn.setBackgroundImage(nil, forState: UIControlState.Normal)
+    func setTitle(decreaseTitle: String, increaseTitle: String) {
+        decreaseBtn.setBackgroundImage(nil, for: UIControlState())
+        increaseBtn.setBackgroundImage(nil, for: UIControlState())
         
-        decreaseBtn.setTitle(decreaseTitle, forState: UIControlState.Normal)
-        increaseBtn.setTitle(increaseTitle, forState: UIControlState.Normal)
+        decreaseBtn.setTitle(decreaseTitle, for: UIControlState())
+        increaseBtn.setTitle(increaseTitle, for: UIControlState())
     }
     
     /**
@@ -280,12 +280,12 @@ extension PPNumberButtonSwift {
      - parameter decreaseImage: 减按钮背景图片
      - parameter increaseImage: 加按钮背景图片
      */
-    func setImage(decreaseImage decreaseImage: UIImage, increaseImage: UIImage) {
-        decreaseBtn.setTitle(nil, forState: UIControlState.Normal)
-        increaseBtn.setTitle(nil, forState: UIControlState.Normal)
+    func setImage(decreaseImage: UIImage, increaseImage: UIImage) {
+        decreaseBtn.setTitle(nil, for: UIControlState())
+        increaseBtn.setTitle(nil, for: UIControlState())
         
-        decreaseBtn.setBackgroundImage(decreaseImage, forState: UIControlState.Normal)
-        increaseBtn.setBackgroundImage(increaseImage, forState: UIControlState.Normal)
+        decreaseBtn.setBackgroundImage(decreaseImage, for: UIControlState())
+        increaseBtn.setBackgroundImage(increaseImage, for: UIControlState())
     }
 
 }

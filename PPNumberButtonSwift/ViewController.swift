@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 160, width: 200, height: 30))
         
         //设置边框颜色
-        numberButton.borderColor(UIColor.grayColor())
+        numberButton.borderColor(UIColor.gray)
         
         //加减按钮的闭包回调
         numberButton.numberResult { (number) in
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         //设置加减按钮的标题
         numberButton.setTitle(decreaseTitle: "加", increaseTitle: "减")
         //设置加减按钮标题的字体大小
-        numberButton.buttonTitleFont(UIFont.systemFontOfSize(15))
+        numberButton.buttonTitleFont(UIFont.systemFont(ofSize: 15))
         //开启抖动动画
         numberButton.shakeAnimation(true)
         //加减按钮的闭包回调
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     

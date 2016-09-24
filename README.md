@@ -7,14 +7,15 @@
 
 ##Requirements 要求
 * iOS 8+
-* Xcode 7.3.1+
+* Xcode 8+
 
 ##Installation 安装
 ###1.手动安装:
 下载DEMO后,将PPNumberButtonSwift子文件夹拖入到项目中, 就可以直接使用,不用import任何东西.
 ###2.CocoaPods安装:
 first
-`pod 'PPNumberButtonSwift', '~> 0.1.0' `
+`pod 'PPNumberButtonSwift',:git => 'https://github.com/jkpang/PPNumberButtonSwift.git' `
+
 then
 `pod install或pod install --no-repo-update`
 
@@ -97,6 +98,7 @@ view.addSubview(numberButton)
 
 ##CocoaPods更新日志
 
+* 2016.09.24(tag:0.1.5)--支持Swift3
 * 2016.09.14(tag:0.1.0)--Pods初始化
 
 ##联系方式:
