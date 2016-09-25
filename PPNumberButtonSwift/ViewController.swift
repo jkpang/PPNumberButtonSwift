@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         
         let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 220, width: 150, height: 44))
         //设置加减按钮的标题
-        numberButton.setTitle(decreaseTitle: "加", increaseTitle: "减")
+        numberButton.setTitle(decreaseTitle: "减", increaseTitle: "加")
         //设置加减按钮标题的字体大小
         numberButton.buttonTitleFont(UIFont.systemFont(ofSize: 15))
         //开启抖动动画

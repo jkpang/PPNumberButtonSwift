@@ -98,7 +98,7 @@ view.addSubview(numberButton)
 
 ##CocoaPods更新日志
 
-* 2016.09.24(tag:0.1.5)--支持Swift3
+* 2016.09.24(tag:0.1.5)--适配Swift3
 * 2016.09.14(tag:0.1.0)--Pods初始化
 
 ##联系方式:

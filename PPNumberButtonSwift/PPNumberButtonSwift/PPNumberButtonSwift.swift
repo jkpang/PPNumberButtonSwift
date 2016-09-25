@@ -24,6 +24,26 @@
  */
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 /// 定义一个闭包
 typealias ResultClosure = (_ number: String)->()
@@ -96,9 +116,9 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
         button.setTitle(title, for: UIControlState())
         button.setTitleColor(UIColor.gray, for: UIControlState())
         button.addTarget(self, action:#selector(self.touchDown(_:)) , for: UIControlEvents.touchDown)
-        button.addTarget(self, action:#selector(self.touchUp(_:)) , for:UIControlEvents.touchUpOutside)
-        button.addTarget(self, action:#selector(self.touchUp(_:)) , for:UIControlEvents.touchUpInside)
-        button.addTarget(self, action:#selector(self.touchUp(_:)) , for:UIControlEvents.touchCancel)
+        button.addTarget(self, action:#selector(self.touchUp) , for:UIControlEvents.touchUpOutside)
+        button.addTarget(self, action:#selector(self.touchUp) , for:UIControlEvents.touchUpInside)
+        button.addTarget(self, action:#selector(self.touchUp) , for:UIControlEvents.touchCancel)
         self.addSubview(button)
         return button;
     }
@@ -116,13 +136,13 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     }
     
     //松开按钮:清除定时器
-    @objc fileprivate func touchUp(_ button: UIButton)  {
+    @objc fileprivate func touchUp()  {
         cleanTimer()
     }
     
     // MARK: - 减运算
     @objc fileprivate func decrease() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
             textField.text = "1"
         }
         
@@ -143,7 +163,7 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
     // MARK: - 加运算
     @objc fileprivate func increase() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
             textField.text = "1"
         }
         
@@ -190,7 +210,7 @@ extension PPNumberButtonSwift: UITextFieldDelegate {
     
     // MARK: - UITextFieldDelegate
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
             textField.text = "1"
         }
         
