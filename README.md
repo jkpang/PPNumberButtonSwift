@@ -88,7 +88,7 @@ view.addSubview(numberButton)
 #####注: 加减号按钮的标题和背景图片只能设置其中一个,若全部设置,则以最后设置的类型为准
 
 ##使用xib创建
-在控制器界面拖入UIView控件,在右侧的设置栏中将class名修改为PPNumberButtonSwift(下面的效果图是OC版本的,记住要填:PPNumberButtonSwift),按回车就OK了.
+在控制器界面拖入UIView控件,在右侧的设置栏中将class名修改为PPNumberButton,按回车就OK了.
 
 ![示例图](https://github.com/jkpang/PPNumberButton/blob/master/photo.png)
 
