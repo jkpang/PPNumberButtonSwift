@@ -1,8 +1,8 @@
 //
-//  PPNumberButtonSwift.swift
+//  PPNumberButton.swift
 //  PPNumberButtonSwift
 //
-//  Created by AndyPang on 16/9/13.
+//  Created by AndyPang on 16/9/25.
 //  Copyright © 2016年 AndyPang. All rights reserved.
 //
 
@@ -24,37 +24,16 @@
  */
 
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l <= r
-  default:
-    return !(rhs < lhs)
-  }
-}
-
 
 /// 定义一个闭包
 typealias ResultClosure = (_ number: String)->()
 
 public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
-    func numberButtonResult(_ numberButton: PPNumberButtonSwift, number: String)
+    func numberButtonResult(_ numberButton: PPNumberButton, number: String)
 }
 
-@IBDesignable open class PPNumberButtonSwift: UIView {
-
+@IBDesignable open class PPNumberButton: UIView {
     weak var delegate: PPNumberButtonDelegate?  // 代理
     var NumberResultClosure: ResultClosure?     // 闭包
     var isShakeAnimation: Bool = false         // 打开抖动动画
@@ -142,14 +121,14 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
     // MARK: - 减运算
     @objc fileprivate func decrease() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
             textField.text = "1"
         }
         
         let number = Int(textField.text!)! - 1;
         if number > 0 {
             textField.text = "\(number)";
-
+            
             //闭包回调
             NumberResultClosure?("\(number)")
             //delegate的回调
@@ -163,7 +142,7 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
     // MARK: - 加运算
     @objc fileprivate func increase() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
             textField.text = "1"
         }
         
@@ -206,11 +185,11 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
 }
 
-extension PPNumberButtonSwift: UITextFieldDelegate {
+extension PPNumberButton: UITextFieldDelegate {
     
     // MARK: - UITextFieldDelegate
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!) <= 0 {
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
             textField.text = "1"
         }
         
@@ -218,14 +197,14 @@ extension PPNumberButtonSwift: UITextFieldDelegate {
         NumberResultClosure?("\(textField.text!)")
         //delegate的回调
         delegate?.numberButtonResult(self, number: "\(textField.text!)")
-
+        
     }
-
+    
 }
 
 // MARK: - 自定义UI接口
-extension PPNumberButtonSwift {
-
+extension PPNumberButton {
+    
     /**
      加减按钮的响应闭包回调
      */
@@ -307,6 +286,5 @@ extension PPNumberButtonSwift {
         decreaseBtn.setBackgroundImage(decreaseImage, for: UIControlState())
         increaseBtn.setBackgroundImage(increaseImage, for: UIControlState())
     }
-
+    
 }
-

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2235FFDB1D87F00100CBD908"
+               BlueprintIdentifier = "22954E8B1D977629008E524D"
                BuildableName = "PPNumberButtonSwift.app"
                BlueprintName = "PPNumberButtonSwift"
                ReferencedContainer = "container:PPNumberButtonSwift.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2235FFEF1D87F00200CBD908"
+               BlueprintIdentifier = "22954E9F1D977629008E524D"
                BuildableName = "PPNumberButtonSwiftTests.xctest"
                BlueprintName = "PPNumberButtonSwiftTests"
                ReferencedContainer = "container:PPNumberButtonSwift.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2235FFDB1D87F00100CBD908"
+            BlueprintIdentifier = "22954E8B1D977629008E524D"
             BuildableName = "PPNumberButtonSwift.app"
             BlueprintName = "PPNumberButtonSwift"
             ReferencedContainer = "container:PPNumberButtonSwift.xcodeproj">
@@ -65,7 +65,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2235FFDB1D87F00100CBD908"
+            BlueprintIdentifier = "22954E8B1D977629008E524D"
             BuildableName = "PPNumberButtonSwift.app"
             BlueprintName = "PPNumberButtonSwift"
             ReferencedContainer = "container:PPNumberButtonSwift.xcodeproj">
@@ -84,7 +84,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2235FFDB1D87F00100CBD908"
+            BlueprintIdentifier = "22954E8B1D977629008E524D"
             BuildableName = "PPNumberButtonSwift.app"
             BlueprintName = "PPNumberButtonSwift"
             ReferencedContainer = "container:PPNumberButtonSwift.xcodeproj">

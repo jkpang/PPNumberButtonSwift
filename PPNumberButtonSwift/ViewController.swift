@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  PPNumberButtonSwift
 //
-//  Created by AndyPang on 16/9/13.
+//  Created by AndyPang on 16/9/25.
 //  Copyright © 2016年 AndyPang. All rights reserved.
 //
 
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     // MARK: - 默认状态
     func example1() {
         
-        let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 100, width: 110, height: 30))
+        let numberButton = PPNumberButton.init(frame: CGRect(x: 100, y: 100, width: 110, height: 30))
         //开启抖动动画
         numberButton.shakeAnimation(true)
         //加减按钮的闭包回调
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     // MARK: - 边框状态
     func example2() {
         
-        let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 160, width: 200, height: 30))
+        let numberButton = PPNumberButton.init(frame: CGRect(x: 100, y: 160, width: 200, height: 30))
         
         //设置边框颜色
         numberButton.borderColor(UIColor.gray)
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     // MARK: - 自定义加减按钮的文字
     func example3() {
         
-        let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 220, width: 150, height: 44))
+        let numberButton = PPNumberButton.init(frame: CGRect(x: 100, y: 220, width: 150, height: 44))
         //设置加减按钮的标题
         numberButton.setTitle(decreaseTitle: "减", increaseTitle: "加")
         //设置加减按钮标题的字体大小
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     // MARK: - 自定义加减按钮背景图片
     func example4() {
         
-        let numberButton = PPNumberButtonSwift.init(frame: CGRect(x: 100, y: 300, width: 100, height: 30))
+        let numberButton = PPNumberButton.init(frame: CGRect(x: 100, y: 300, width: 100, height: 30))
         
         //设置加减按钮的自定义图片
         numberButton.setImage(decreaseImage: UIImage.init(named: "decrease_highlight")!, increaseImage: UIImage.init(named: "timeline_relationship_icon_addattention-1")!)
@@ -101,7 +101,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
-
