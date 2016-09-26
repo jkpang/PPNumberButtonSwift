@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22106B201D995CE900D16803 /* .swift-version in Resources */ = {isa = PBXBuildFile; fileRef = 22106B1F1D995CE900D16803 /* .swift-version */; };
 		22954E901D977629008E524D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22954E8F1D977629008E524D /* AppDelegate.swift */; };
 		22954E921D977629008E524D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22954E911D977629008E524D /* ViewController.swift */; };
 		22954E951D977629008E524D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22954E931D977629008E524D /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22106B1F1D995CE900D16803 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		22954E8C1D977629008E524D /* PPNumberButtonSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPNumberButtonSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22954E8F1D977629008E524D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22954E911D977629008E524D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		22954E831D977629008E524D = {
 			isa = PBXGroup;
 			children = (
+				22106B1F1D995CE900D16803 /* .swift-version */,
 				22954E8E1D977629008E524D /* PPNumberButtonSwift */,
 				22954EA31D977629008E524D /* PPNumberButtonSwiftTests */,
 				22954E8D1D977629008E524D /* Products */,
@@ -190,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22106B201D995CE900D16803 /* .swift-version in Resources */,
 				22954E9A1D977629008E524D /* LaunchScreen.storyboard in Resources */,
 				22954E971D977629008E524D /* Assets.xcassets in Resources */,
 				22954E951D977629008E524D /* Main.storyboard in Resources */,
