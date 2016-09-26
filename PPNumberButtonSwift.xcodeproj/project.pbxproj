@@ -356,6 +356,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkpang.PPNumberButtonSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.0;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -369,6 +370,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkpang.PPNumberButtonSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.0;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -420,6 +422,7 @@
 				22954EAB1D977629008E524D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22954EAC1D977629008E524D /* Build configuration list for PBXNativeTarget "PPNumberButtonSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +431,7 @@
 				22954EAE1D977629008E524D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
