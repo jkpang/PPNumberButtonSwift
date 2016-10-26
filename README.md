@@ -5,6 +5,8 @@
 
 ![示例图](https://github.com/jkpang/PPNumberButton/blob/master/PPNumberButton.gif)
 
+###新建 PP-iOS学习交流群 : 323408051 有关于PP系列封装的问题和iOS技术可以在此群讨论
+
 ##Requirements 要求
 * iOS 8+
 * Xcode 8+
@@ -104,7 +106,9 @@ view.addSubview(numberButton)
 ##联系方式:
 * Weibo : @CoderPang
 * Email : jkpang@outlook.com
-* QQ : 2406552315
+* QQ群 : 323408051
+
+![PP-iOS学习交流群群二维码](https://github.com/jkpang/PPCounter/blob/master/PP-iOS%E5%AD%A6%E4%B9%A0%E4%BA%A4%E6%B5%81%E7%BE%A4%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
 
 ##许可证
 PPNumberButtonSwift 使用 MIT 许可证，详情见 LICENSE 文件。
