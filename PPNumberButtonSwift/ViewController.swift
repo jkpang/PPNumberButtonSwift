@@ -45,6 +45,8 @@ class ViewController: UIViewController {
         let numberButton = PPNumberButton.init(frame: CGRect(x: 100, y: 100, width: 110, height: 30))
         //开启抖动动画
         numberButton.shakeAnimation(true)
+        numberButton.setMaxValue(10)
+        numberButton.setMinValue(2)
         //加减按钮的闭包回调
         numberButton.numberResult { (number) in
             

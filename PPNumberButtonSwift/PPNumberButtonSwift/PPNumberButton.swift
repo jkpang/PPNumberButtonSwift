@@ -39,11 +39,14 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
 @IBDesignable open class PPNumberButton: UIView {
     weak var delegate: PPNumberButtonDelegate?  // 代理
     var NumberResultClosure: ResultClosure?     // 闭包
-    var isShakeAnimation: Bool = false         // 打开抖动动画
+    var isShakeAnimation: Bool = false          // 是否打开抖动动画
     var decreaseBtn: UIButton!     // 减按钮
     var increaseBtn: UIButton!     // 加按钮
     var textField: UITextField!    // 数量展示/输入框
-    var timer: Timer!            // 快速加减定时器
+    var timer: Timer!              // 快速加减定时器
+    var minValue : Int!            // 最小值
+    var maxValue : Int!            // 最大值
+    
     
     
     override public init(frame: CGRect) {
@@ -65,9 +68,11 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
     //设置UI布局
     fileprivate func setupUI() {
-        backgroundColor = UIColor.white;
-        layer.cornerRadius = 3.0;
-        clipsToBounds = true;
+        backgroundColor = UIColor.white
+        layer.cornerRadius = 3.0
+        clipsToBounds = true
+        minValue = 1
+        maxValue = Int.max;
         
         decreaseBtn = setupButton(title: "－")
         increaseBtn = setupButton(title: "＋")
@@ -124,12 +129,12 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
     // MARK: - 减运算
     @objc fileprivate func decrease() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
-            textField.text = "1"
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= minValue! {
+            textField.text = "\(minValue!)"
         }
         
         let number = Int(textField.text!)! - 1;
-        if number > 0 {
+        if number >= minValue! {
             textField.text = "\(number)";
             
             //闭包回调
@@ -139,22 +144,31 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
         } else {
             //添加抖动动画
             if isShakeAnimation {shakeAnimation()}
-            print("数量不能小于1");
+            print("数量不能小于\(minValue)");
         }
     }
     
     // MARK: - 加运算
     @objc fileprivate func increase() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
-            textField.text = "1"
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= minValue! {
+            textField.text = "\(minValue!)"
         }
         
         let number = Int(textField.text!)! + 1;
-        textField.text = "\(number)";
-        //闭包回调
-        NumberResultClosure?("\(number)")
-        //delegate的回调
-        delegate?.numberButtonResult(self, number: "\(number)")
+        
+        if number <= maxValue! {
+            textField.text = "\(number)";
+            //闭包回调
+            NumberResultClosure?("\(number)")
+            //delegate的回调
+            delegate?.numberButtonResult(self, number: "\(number)")
+        } else {
+            //添加抖动动画
+            if isShakeAnimation {shakeAnimation()}
+            print("已超过最大数量\(maxValue)");
+        }
+        
+        
     }
     
     // MARK: - 抖动动画
@@ -192,10 +206,12 @@ extension PPNumberButton: UITextFieldDelegate {
     
     // MARK: - UITextFieldDelegate
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= 0 {
-            textField.text = "1"
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! < minValue! {
+            textField.text = "\(minValue!)"
         }
-        
+        if Int(textField.text!)! > maxValue! {
+            textField.text = "\(maxValue!)"
+        }
         //闭包回调
         NumberResultClosure?("\(textField.text!)")
         //delegate的回调
@@ -215,7 +231,9 @@ extension PPNumberButton {
         NumberResultClosure = finished
     }
     
-    /// 输入框中的内容
+    /**
+     输入框中的内容
+     */
     var currentNumber: String? {
         get {
             return (textField.text!)
@@ -223,6 +241,21 @@ extension PPNumberButton {
         set {
             textField.text = newValue
         }
+    }
+    
+    /**
+     设置最小值
+     */
+    func setMinValue(_ value: Int) {
+        minValue = value
+        textField.text = "\(value)"
+    }
+    
+    /**
+     设置最大值
+     */
+    func setMaxValue(_ value: Int) {
+        maxValue = value
     }
     
     /**

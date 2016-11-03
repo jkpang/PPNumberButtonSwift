@@ -100,6 +100,7 @@ view.addSubview(numberButton)
 
 ##CocoaPods更新日志
 
+* 2016.11.03(tag:0.2.0)--设置maxValue(最大值)与minValue(最小值)属性接口.
 * 2016.09.24(tag:0.1.1)--适配Swift3
 * 2016.09.14(tag:0.1.0)--Pods初始化
 
