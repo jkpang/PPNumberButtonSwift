@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'PPNumberButtonSwift'
-  s.version      = '0.1.1'
+  s.version      = '0.2.0'
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.homepage     = 'https://github.com/jkpang/PPNumberButtonSwift.git'
   s.authors      = { "jkpang" => "jkpang@outlook.com" }
