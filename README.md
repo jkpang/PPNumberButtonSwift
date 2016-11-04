@@ -29,7 +29,7 @@ then
 ```swift
 let numberButton = PPNumberButton.init(frame: CGRect(x: 100, y: 100, width: 110, height: 30))
 //开启抖动动画
-numberButton.shakeAnimation(true)
+numberButton.shakeAnimation = true
 //加减按钮的闭包回调
 numberButton.numberResult { (number) in
     print(number)
@@ -60,7 +60,7 @@ numberButton.setTitle(decreaseTitle: "加", increaseTitle: "减")
 //设置加减按钮标题的字体大小
 numberButton.buttonTitleFont(UIFont.systemFontOfSize(15))
 //开启抖动动画
-numberButton.shakeAnimation(true)
+numberButton.shakeAnimation = true
 //加减按钮的闭包回调
 numberButton.numberResult { (number) in
     print(number)
@@ -77,7 +77,7 @@ let numberButton = PPNumberButton.init(frame: CGRect(x: 100, y: 300, width: 100,
 //设置加减按钮的自定义图片
 numberButton.setImage(decreaseImage: UIImage.init(named: "decrease_highlight")!, increaseImage: UIImage.init(named: "timeline_relationship_icon_addattention-1")!)
 //开启抖动动画
-numberButton.shakeAnimation(true)
+numberButton.shakeAnimation = true
 //加减按钮的闭包回调
 numberButton.numberResult { (number) in
     print(number)

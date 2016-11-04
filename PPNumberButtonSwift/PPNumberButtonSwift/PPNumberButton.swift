@@ -29,25 +29,22 @@
 import UIKit
 
 /// 定义一个闭包
-typealias ResultClosure = (_ number: String)->()
+public typealias ResultClosure = (_ number: String)->()
 
 public protocol PPNumberButtonDelegate: NSObjectProtocol {
-    
     func numberButtonResult(_ numberButton: PPNumberButton, number: String)
 }
 
 @IBDesignable open class PPNumberButton: UIView {
     weak var delegate: PPNumberButtonDelegate?  // 代理
     var NumberResultClosure: ResultClosure?     // 闭包
-    var isShakeAnimation: Bool = false          // 是否打开抖动动画
     var decreaseBtn: UIButton!     // 减按钮
     var increaseBtn: UIButton!     // 加按钮
     var textField: UITextField!    // 数量展示/输入框
     var timer: Timer!              // 快速加减定时器
-    var minValue : Int!            // 最小值
-    var maxValue : Int!            // 最大值
-    
-    
+    public var _minValue = 1                 // 最大值
+    public var _maxValue = Int.max           // 最大值
+    public var shakeAnimation: Bool = false  // 是否打开抖动动画
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,8 +68,6 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
         backgroundColor = UIColor.white
         layer.cornerRadius = 3.0
         clipsToBounds = true
-        minValue = 1
-        maxValue = Int.max;
         
         decreaseBtn = setupButton(title: "－")
         increaseBtn = setupButton(title: "＋")
@@ -129,12 +124,12 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     
     // MARK: - 减运算
     @objc fileprivate func decrease() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= minValue! {
-            textField.text = "\(minValue!)"
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= _minValue {
+            textField.text = "\(_minValue)"
         }
         
         let number = Int(textField.text!)! - 1;
-        if number >= minValue! {
+        if number >= _minValue {
             textField.text = "\(number)";
             
             //闭包回调
@@ -143,20 +138,20 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
             delegate?.numberButtonResult(self, number: "\(number)")
         } else {
             //添加抖动动画
-            if isShakeAnimation {shakeAnimation()}
-            print("数量不能小于\(minValue)");
+            if shakeAnimation {shakeAnimationFunc()}
+            print("数量不能小于\(_minValue)");
         }
     }
     
     // MARK: - 加运算
     @objc fileprivate func increase() {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= minValue! {
-            textField.text = "\(minValue!)"
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! <= _minValue {
+            textField.text = "\(_minValue)"
         }
         
         let number = Int(textField.text!)! + 1;
         
-        if number <= maxValue! {
+        if number <= _maxValue {
             textField.text = "\(number)";
             //闭包回调
             NumberResultClosure?("\(number)")
@@ -164,15 +159,15 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
             delegate?.numberButtonResult(self, number: "\(number)")
         } else {
             //添加抖动动画
-            if isShakeAnimation {shakeAnimation()}
-            print("已超过最大数量\(maxValue)");
+            if shakeAnimation {shakeAnimationFunc()}
+            print("已超过最大数量\(_maxValue)");
         }
         
         
     }
     
     // MARK: - 抖动动画
-    fileprivate func shakeAnimation() {
+    fileprivate func shakeAnimationFunc() {
         let animation = CAKeyframeAnimation.init(keyPath: "position.x")
         //获取当前View的position坐标
         let positionX = layer.position.x
@@ -206,11 +201,11 @@ extension PPNumberButton: UITextFieldDelegate {
     
     // MARK: - UITextFieldDelegate
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! < minValue! {
-            textField.text = "\(minValue!)"
+        if (textField.text?.characters.count)! == 0 || Int(textField.text!)! < _minValue {
+            textField.text = "\(_minValue)"
         }
-        if Int(textField.text!)! > maxValue! {
-            textField.text = "\(maxValue!)"
+        if Int(textField.text!)! > _maxValue {
+            textField.text = "\(_maxValue)"
         }
         //闭包回调
         NumberResultClosure?("\(textField.text!)")
@@ -222,14 +217,7 @@ extension PPNumberButton: UITextFieldDelegate {
 }
 
 // MARK: - 自定义UI接口
-extension PPNumberButton {
-    
-    /**
-     加减按钮的响应闭包回调
-     */
-    func numberResult(_ finished: @escaping ResultClosure) {
-        NumberResultClosure = finished
-    }
+public extension PPNumberButton {
     
     /**
      输入框中的内容
@@ -242,27 +230,35 @@ extension PPNumberButton {
             textField.text = newValue
         }
     }
-    
     /**
      设置最小值
      */
-    func setMinValue(_ value: Int) {
-        minValue = value
-        textField.text = "\(value)"
+    var minValue: Int {
+        get {
+            return _minValue
+        }
+        set {
+            _minValue = newValue
+            textField.text = "\(newValue)"
+        }
     }
-    
     /**
      设置最大值
      */
-    func setMaxValue(_ value: Int) {
-        maxValue = value
+    var maxValue: Int {
+        get {
+            return _maxValue
+        }
+        set {
+            _maxValue = newValue
+        }
     }
     
     /**
-     是否开启抖动动画,默认false
+     加减按钮的响应闭包回调
      */
-    func shakeAnimation(_ isOpen: Bool) {
-        isShakeAnimation = isOpen
+    func numberResult(_ finished: @escaping ResultClosure) {
+        NumberResultClosure = finished
     }
     
     /**

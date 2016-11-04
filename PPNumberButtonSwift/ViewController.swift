@@ -29,7 +29,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,9 +44,9 @@ class ViewController: UIViewController {
         
         let numberButton = PPNumberButton.init(frame: CGRect(x: 100, y: 100, width: 110, height: 30))
         //开启抖动动画
-        numberButton.shakeAnimation(true)
-        numberButton.setMaxValue(10)
-        numberButton.setMinValue(2)
+        numberButton.shakeAnimation = true
+        numberButton.maxValue = 10
+        numberButton.minValue = 2
         //加减按钮的闭包回调
         numberButton.numberResult { (number) in
             
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         //设置加减按钮标题的字体大小
         numberButton.buttonTitleFont(UIFont.systemFont(ofSize: 15))
         //开启抖动动画
-        numberButton.shakeAnimation(true)
+        numberButton.shakeAnimation = true
         //加减按钮的闭包回调
         numberButton.numberResult { (number) in
             
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         numberButton.setImage(decreaseImage: UIImage.init(named: "decrease_highlight")!, increaseImage: UIImage.init(named: "timeline_relationship_icon_addattention-1")!)
         
         //开启抖动动画
-        numberButton.shakeAnimation(true)
+        numberButton.shakeAnimation = true
         //加减按钮的闭包回调
         numberButton.numberResult { (number) in
             
